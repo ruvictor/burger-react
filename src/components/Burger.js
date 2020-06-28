@@ -9,15 +9,42 @@ export default class Burger extends Component {
     }
 
     addIngredient = (ingredient) => {
+        let {
+            lettuce,
+            tomato,
+            sausage,
+            cheese
+        } = this.state;
+
+        let stateValue;
+        switch(ingredient){
+            case 'lettuce':{
+                stateValue = lettuce + 1;
+                break;
+            }
+            case 'tomato':{
+                stateValue = tomato + 1;
+                break;
+            }
+            case 'sausage':{
+                stateValue = sausage + 1;
+                break;
+            }
+            case 'cheese':{
+                stateValue = cheese + 1;
+                break;
+            }
+            default: break;
+        }
         this.setState({
-            [ingredient]: this.state.lettuce + 1
+            [ingredient]: stateValue
         });
     }
 
     render(){
         return (
             <>
-
+                <button onClick={() => this.addIngredient('cheese')}>Add</button>
             </>
         );
     }
