@@ -16,12 +16,43 @@
     background-position: center;
 }
 
+.meatSide{
+    background-image: url(../assets/meat.jpg);
+    height: 80px;
+    width: 100%;
+    display: table;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
 .ingredientsBlock{
     background-color: #f4b46c;
     margin: 30px auto 0;
     display: table;
-    max-width: 500px;
+    max-width: 200px;
     width: 100%;
     border-radius: 3px;
     padding: 20px;
+    text-align: center;
+}
+.ingredientsBlock p{
+    padding: 0;
+    margin: 0;
+    font-weight: bold;
+    font-size: 18px;
+    text-transform: uppercase;
+}
+.ingrBtns{
+    margin: 0 0 20px;
+    display: flex;
+    justify-content: space-between;
+}
+.ingrBtn{
+    border: 0;
+    background-color: #c17116;
+    color: #fff;
+    padding: 5px;
+    cursor: pointer;
+    display: table;
+    width: 95px;
 }
