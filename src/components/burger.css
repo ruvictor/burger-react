@@ -1,0 +1,27 @@
+.topSide{
+    background-image: url(../assets/top.jpg);
+    height: 200px;
+    width: 100%;
+    display: table;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.bottomSide{
+    background-image: url(../assets/bottom.jpg);
+    height: 110px;
+    width: 100%;
+    display: table;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.ingredientsBlock{
+    background-color: #f4b46c;
+    margin: 30px auto 0;
+    display: table;
+    max-width: 500px;
+    width: 100%;
+    border-radius: 3px;
+    padding: 20px;
+}
