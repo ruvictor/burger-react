@@ -3,6 +3,9 @@
     width: 100%;
     overflow: auto;
 }
+.burgerIngredients p{
+    text-align: center;
+}
 .topSide{
     background-image: url(../assets/top.jpg);
     background-size: 300px;
