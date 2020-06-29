@@ -5,16 +5,16 @@ export default class Burger extends Component {
     state = {
         lettuce: 0,
         tomato: 0,
-        meat: 0,
-        cheese: 0
+        cheese: 0,
+        meat: 0
     }
 
-    addIngredient = (ingredient) => {
+    addIngredient = (action, ingredient) => {
         let {
             lettuce,
             tomato,
-            meat,
-            cheese
+            cheese,
+            meat
         } = this.state;
 
         let stateValue;
@@ -27,54 +27,84 @@ export default class Burger extends Component {
                 stateValue = tomato;
                 break;
             }
-            case 'meat':{
-                stateValue = meat;
-                break;
-            }
             case 'cheese':{
                 stateValue = cheese;
                 break;
             }
+            case 'meat':{
+                stateValue = meat;
+                break;
+            }
             default: break;
         }
+        if(action === 'add'){
+            stateValue = stateValue + 1;
+        }else{
+            stateValue = stateValue - 1;
+        }
         this.setState({
-            [ingredient]: stateValue + 1
+            [ingredient]: stateValue >= 0 ? stateValue : 0
         });
     }
 
     burgerContent = () => {
-        let meat = <div className="meatSide"></div>;
-        return meat;
+        let {
+            lettuce,
+            tomato,
+            cheese,
+            meat
+        } = this.state;
+        let burger = [];
+
+        // outputting the lettuce
+        for (let i = 0; i < lettuce; i++){
+            burger.push(<div className="lettuseSide"></div>);
+        }
+        // outputting the tomato
+        for (let i = 0; i < tomato; i++){
+            burger.push(<div className="tomatoSide"></div>);
+        }
+        // outputting the cheese
+        for (let i = 0; i < cheese; i++){
+            burger.push(<div className="cheeseSide"></div>);
+        }
+        // outputting the meat
+        for (let i = 0; i < meat; i++){
+            burger.push(<div className="meatSide"></div>);
+        }
+        return burger;
     }
 
     render(){
         return (
             <>
-                <div className="topSide"></div>
-                {this.burgerContent()}
-                <div className="bottomSide"></div>
+                <div className="burgerIngredients">
+                    <div className="topSide"></div>
+                    {this.burgerContent()}
+                    <div className="bottomSide"></div>
+                </div>
                 <div className="ingredientsBlock">
                     <p>Lettuce</p>
                     <div className="ingrBtns">
-                        <button className="ingrBtn" onClick={() => this.addIngredient('lettuce')}>Add</button>
-                        <button className="ingrBtn" onClick={() => this.addIngredient('lettuce')}>Remove</button>
+                        <button className="ingrBtn" onClick={() => this.addIngredient('add','lettuce')}>Add</button>
+                        <button className="ingrBtn" onClick={() => this.addIngredient('remove','lettuce')}>Remove</button>
                     </div>
                     <p>TOMATO</p>
                     <div className="ingrBtns">
-                        <button className="ingrBtn" onClick={() => this.addIngredient('tomato')}>Add</button>
-                        <button className="ingrBtn" onClick={() => this.addIngredient('tomato')}>Remove</button>
-                    </div>
-                    <p>MEAT</p>
-                    <div className="ingrBtns">
-                        <button className="ingrBtn" onClick={() => this.addIngredient('meat')}>Add</button>
-                        <button className="ingrBtn" onClick={() => this.addIngredient('meat')}>Remove</button>
+                        <button className="ingrBtn" onClick={() => this.addIngredient('add','tomato')}>Add</button>
+                        <button className="ingrBtn" onClick={() => this.addIngredient('remove','tomato')}>Remove</button>
                     </div>
                     <p>CHEESE</p>
                     <div className="ingrBtns">
-                        <button className="ingrBtn" onClick={() => this.addIngredient('cheese')}>Add</button>
-                        <button className="ingrBtn" onClick={() => this.addIngredient('cheese')}>Remove</button>
+                        <button className="ingrBtn" onClick={() => this.addIngredient('add','cheese')}>Add</button>
+                        <button className="ingrBtn" onClick={() => this.addIngredient('remove','cheese')}>Remove</button>
                     </div>
+                    <p>MEAT</p>
+                    <div className="ingrBtns">
+                        <button className="ingrBtn" onClick={() => this.addIngredient('add','meat')}>Add</button>
+                        <button className="ingrBtn" onClick={() => this.addIngredient('remove','meat')}>Remove</button>
                     </div>
+                </div>
             </>
         );
     }
